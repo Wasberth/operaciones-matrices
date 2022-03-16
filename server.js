@@ -32,8 +32,10 @@ app.post('/calculate1', (req, res) => {
     let _a2D = _a2.calculateDet();
 
     let am = a.getM();
-    for (let i = 0; i < am.mc.nRow; i++) {
-        am.multiplyRow(i, math.divide(1, _aD.d));
+    if (math.equal(_aD.d, 0)) {
+        for (let i = 0; i < am.mc.nRow; i++) {
+            am.multiplyRow(i, math.divide(1, _aD.d));
+        }
     }
 
     res.send(`<!DOCTYPE html>
@@ -90,12 +92,12 @@ app.post('/calculate1', (req, res) => {
             ${_a2.getHtml()}
             <div class="col" style="text-align: center; margin-top: 1rem;">|A<sup>2</sup>| = ${_a2D.op} = ${_a2D.det}</div>
         </div>
-        <div class="row row-cols-auto">
-            <div class="col" style="text-align: center; margin-top: 1rem;">M<sup>T</sup> = </div>
-            ${am.getOriginalHtml()}
-            <div class="col" style="text-align: center; margin-top: 1rem;">A<sup>-1</sup> = </div>
-            ${am.getMatrixHtml()}
-        </div>
+        ${math.equal(_aD.d, 0) ? `` : `<div class="row row-cols-auto">
+        <div class="col" style="text-align: center; margin-top: 1rem;">M<sup>T</sup> = </div>
+        ${am.getOriginalHtml()}
+        <div class="col" style="text-align: center; margin-top: 1rem;">A<sup>-1</sup> = </div>
+        ${am.getMatrixHtml()}
+    </div>`}
 
     </div>
 </body>
@@ -106,6 +108,6 @@ app.post('/calculate1', (req, res) => {
 
 
 // SERVER STARTUP
-server.listen(port, function() {
+server.listen(port, function () {
     console.log(`Servidor corriendo en el puerto ${port}`);
 });
