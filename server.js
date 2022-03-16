@@ -36,37 +36,6 @@ app.post('/calculate1', (req, res) => {
         am.multiplyRow(i, math.divide(1, _aD.d));
     }
 
-    /*console.log(a);
-    console.log(a.mc);
-    for (let i = 0; i < 3; i++) {
-        for (let j = 0; j < 3; j++) {
-            console.log(math.format(a.mc.matrix[i][j]));
-        }
-    }
-    b = matrixHandler.matrixDot(a, a);
-    console.log(b);
-
-    for (let i = 0; i < 3; i++) {
-        for (let j = 0; j < 3; j++) {
-            console.log(math.format(b.mc.matrix[i][j]));
-        }
-    }
-
-    let f = math.fraction('-30/9');
-    console.log(f);
-    console.log(f.n);
-    console.log(f.d);
-    console.log(b.mc.matrix);
-    b.shiftRows(0, 1);
-    console.log(b.mc.matrix);
-
-    solver.diagonalize(a, true);
-    console.log("after diag");
-    console.log(a.mc.matrix);
-    console.log(a.getOriginalHtml());
-    console.log(a.getHtml());
-    console.log(a.balances);*/
-
     res.send(`<!DOCTYPE html>
 <html lang="es">
 
@@ -96,9 +65,7 @@ app.post('/calculate1', (req, res) => {
         <div class="row">
             <h2>Operaciones con matrices</h2>
 
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates nostrum distinctio, recusandae aliquam sed cumque! Consectetur, debitis? Obcaecati, ad minus accusantium totam, veniam, voluptatibus alias voluptate nulla eos temporibus
-                blanditiis.
-            </p>
+            <p>Aquí se encuentran varias operaciones sobre A</p>
         </div>
 
         <div class="row row-cols-auto">
