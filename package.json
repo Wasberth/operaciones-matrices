@@ -1,0 +1,29 @@
+{
+  "name": "operaciones-matrices",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Wasberth/operaciones-matrices.git"
+  },
+  "keywords": [
+    "Operaciones",
+    "Matrices",
+    "determinante"
+  ],
+  "author": "Wilberth",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Wasberth/operaciones-matrices/issues"
+  },
+  "homepage": "https://github.com/Wasberth/operaciones-matrices#readme",
+  "dependencies": {
+    "express": "^4.17.3",
+    "math.js": "^1.1.46",
+    "mathjs": "^10.4.0"
+  }
+}
