@@ -32,7 +32,7 @@ app.post('/calculate1', (req, res) => {
     let _a2D = _a2.calculateDet();
 
     let am = a.getM();
-    if (math.equal(_aD.d, 0)) {
+    if (!math.equal(_aD.d, 0)) {
         for (let i = 0; i < am.mc.nRow; i++) {
             am.multiplyRow(i, math.divide(1, _aD.d));
         }
