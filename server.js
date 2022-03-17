@@ -67,7 +67,7 @@ app.post('/calculate1', (req, res) => {
         <div class="row">
             <h2>Operaciones con matrices</h2>
 
-            <p>Aquí se encuentran varias operaciones sobre A</p>
+            <p>Aquí se encuentran varias operaciones sobre la matriz A</p>
         </div>
 
         <div class="row row-cols-auto">
