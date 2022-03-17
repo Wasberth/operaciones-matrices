@@ -19,24 +19,24 @@ const port = process.env.PORT || 3000; // FOR HEROKU
 
 // FROM POST METHOD CALCULATE
 app.post('/calculate1', (req, res) => {
-    console.log(req.body);
-    let a = matrixHandler.CreateIfValid(req.body, 'a');
-    let a2 = matrixHandler.matrixDot(a, a);
+            console.log(req.body);
+            let a = matrixHandler.CreateIfValid(req.body, 'a');
+            let a2 = matrixHandler.matrixDot(a, a);
 
-    let _a = matrixHandler.createMatrixControl(a.mc.nRow, a.mc.nCol, a.mc.matrix);
-    solver.diagonalize(_a, false);
-    let _aD = _a.calculateDet();
+            let _a = matrixHandler.createMatrixControl(a.mc.nRow, a.mc.nCol, a.mc.matrix);
+            solver.diagonalize(_a, false);
+            let _aD = _a.calculateDet();
 
-    let _a2D = math.multiply(_aD.d, _aD.d);
+            let _a2D = math.multiply(_aD.d, _aD.d);
 
-    let am = a.getM();
-    if (!math.equal(_aD.d, 0)) {
-        for (let i = 0; i < am.mc.nRow; i++) {
-            am.multiplyRow(i, math.divide(1, _aD.d));
-        }
-    }
+            let am = a.getM();
+            if (!math.equal(_aD.d, 0)) {
+                for (let i = 0; i < am.mc.nRow; i++) {
+                    am.multiplyRow(i, math.divide(1, _aD.d));
+                }
+            }
 
-    res.send(`<!DOCTYPE html>
+            res.send(`<!DOCTYPE html>
 <html lang="es">
 
 <head>
@@ -85,7 +85,7 @@ app.post('/calculate1', (req, res) => {
 
         </div>
         <div class="row row-cols-auto">
-            <div class="col" style="text-align: center; margin-top: 1rem;">|A<sup>2</sup>| = (${_aD.det})<sup>2</sup> = ${matrix-handler.formatFraction(_a2D)}</div>
+            <div class="col" style="text-align: center; margin-top: 1rem;">|A<sup>2</sup>| = (${_aD.det})<sup>2</sup> = ${matrixHandler.formatFraction(_a2D)}</div>
         </div>
 			${math.equal(_aD.d, 0) ? `` : 
 		`<div class="row row-cols-auto">
