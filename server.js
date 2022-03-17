@@ -27,9 +27,7 @@ app.post('/calculate1', (req, res) => {
     solver.diagonalize(_a, false);
     let _aD = _a.calculateDet();
 
-    let _a2 = matrixHandler.createMatrixControl(a2.mc.nRow, a2.mc.nCol, a2.mc.matrix);
-    solver.diagonalize(_a2, false);
-    let _a2D = _a2.calculateDet();
+    let _a2D = math.multiply(_aD.d, _aD.d);
 
     let am = a.getM();
     if (!math.equal(_aD.d, 0)) {
@@ -87,17 +85,15 @@ app.post('/calculate1', (req, res) => {
 
         </div>
         <div class="row row-cols-auto">
-            <div class="col" style="text-align: center; margin-top: 1rem;">|A<sup>2</sup>|: </div>
-            ${_a2.getOriginalHtml()}
-            ${_a2.getHtml()}
-            <div class="col" style="text-align: center; margin-top: 1rem;">|A<sup>2</sup>| = ${_a2D.op} = ${_a2D.det}</div>
+            <div class="col" style="text-align: center; margin-top: 1rem;">|A<sup>2</sup>| = (${_aD.det})<sup>2</sup> = ${matrix-handler.formatFraction(_a2D)}</div>
         </div>
-        ${math.equal(_aD.d, 0) ? `` : `<div class="row row-cols-auto">
-        <div class="col" style="text-align: center; margin-top: 1rem;">M<sup>T</sup> = </div>
-        ${am.getOriginalHtml()}
-        <div class="col" style="text-align: center; margin-top: 1rem;">A<sup>-1</sup> = </div>
-        ${am.getMatrixHtml()}
-    </div>`}
+			${math.equal(_aD.d, 0) ? `` : 
+		`<div class="row row-cols-auto">
+			<div class="col" style="text-align: center; margin-top: 1rem;">M<sup>T</sup> = </div>
+			${am.getOriginalHtml()}
+			<div class="col" style="text-align: center; margin-top: 1rem;">A<sup>-1</sup> = </div>
+			${am.getMatrixHtml()}
+		</div>`}
 
     </div>
 </body>

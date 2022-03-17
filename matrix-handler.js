@@ -348,3 +348,4 @@ function createMc(nRow, nCol, matrix) {
 module.exports.CreateIfValid = validateJSON;
 module.exports.matrixDot = matrixDot;
 module.exports.createMatrixControl = createMc;
+module.exports.formatFraction = formatFraction;
